@@ -1,22 +1,34 @@
 package br.senai.br.jandira.model;
 
-import java.util.Scanner;
 
 public class Usuario {
-	
-	public static void main(String[] args) {
 		
-		Scanner n = new Scanner(System.in);
-		int multiplicador = 1, tab;
-		System.out.println("Número da tabuada que deseja: ");
-		int var = n.nextInt();
 		
-		while(multiplicador <= 10)
-		{
-			tab = var*multiplicador;
-			System.out.println(multiplicador + "x" + var + "=" + tab);
-			multiplicador = multiplicador +1;
-		}
-	}
-
+		public int multiplicando;
+		public int minimoMultiplicador;
+		public int maximoMultiplicador;
+		
+		 public String[] getTabuada() {
+			 
+			 int tamanho = maximoMultiplicador - minimoMultiplicador +1;
+			 String tabuada[] = new String[tamanho]; 
+			 
+			 int contador =0;
+			 
+			 while (contador < tamanho) {
+				 
+				 int produto = multiplicando * minimoMultiplicador;
+				 
+				 String resultado = (multiplicando + "x" + minimoMultiplicador + "=" + produto);	 
+			      tabuada[contador] = resultado;
+				 
+				 contador++;
+				 minimoMultiplicador++;
+	 }
+			return tabuada;
+			
+   }
+ 
 }
+
+  

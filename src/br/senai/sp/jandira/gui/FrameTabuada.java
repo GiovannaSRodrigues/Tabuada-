@@ -40,6 +40,8 @@ public class FrameTabuada {
        labelImc.setForeground(new Color(113,65,45));
        labelImc.setFont(new Font("Courier new", Font.BOLD, 32));
 	   
+       
+       
 	   
 	
 
