@@ -1,28 +1,25 @@
 package br.senai.sp.jandira;
 
-import br.senai.br.jandira.model.Usuario;
+import java.awt.Color;
+import java.awt.Font;
+
 import br.senai.sp.jandira.gui.FrameTabuada;
 
 public class AppTabuada {
 
 	public static void main(String[] args) {
-	
-		Usuario usuario = new Usuario();
-		usuario.multiplicando =2;
-		usuario.minimoMultiplicador =0;
-		usuario.maximoMultiplicador =5;
 		
+		FrameTabuada tabuada = new FrameTabuada();
+		tabuada.titulo = "Tabuada";
+		tabuada.largura = 600;
+		tabuada.altura = 800;
+		tabuada.corFundoDeTela = new Color(64, 128, 128);
+		tabuada.corDoTextoDoBotao = new Color(0, 0, 0);
+		tabuada.corDoBotao = new Color(192, 192, 192);
+		tabuada.fonteDosLabels = new Font("Arial Black", Font.BOLD, 13);
+		tabuada.corDoTitulo = new Color(255, 255, 255);
+		tabuada.corDosLabels = new Color(192, 192, 192);
+		tabuada.criarTela();
 		
-		String[] resultado = usuario.getTabuada();
-		
-		int contador = 0;
-		
-		while(contador < resultado.length) {
-		System.out.println(resultado[contador]);
-		contador++;
-			
-		}
-
 	}
-
 }
