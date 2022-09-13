@@ -26,20 +26,23 @@ import br.senai.sp.jandira.model.Usuario;
 public class FrameTabuada {
 
 	public String titulo;
-	public int largura;
-	public int altura;
 	public Color corFundoDeTela;
 	public Font fonteDosLabels;
 	public Color corDoTextoDoBotao;
 	public Color corDoBotao;
 	public Color corDoTitulo;
 	public Color corDosLabels;
+	public int largura;
+	public int altura;
+	
 	Icon iconeMenino = new ImageIcon("src/br/senai/sp/jandira/imagens/menino.png");
 
 	Usuario usuario = new Usuario();
 	JTextField textFieldMultiplicando = new JtextFieldSomenteNumeros();
 	JTextField textFieldMinimoMultiplicador = new JtextFieldSomenteNumeros();
 	JTextField textFieldMaximoMultiplicador = new JtextFieldSomenteNumeros();
+	
+	JList<String> listResultado = new JList<String>();
 
 	public void criarTela() {
 
@@ -50,7 +53,7 @@ public class FrameTabuada {
 		tela.setLayout(null);
 
 		Container painel = tela.getContentPane();
-		painel.setBackground(Color.WHITE);
+		painel.setBackground(new Color(147,112,219) );
 
 		JLabel labelTitulo = new JLabel();
 		labelTitulo.setText("Tabuada");
@@ -58,12 +61,12 @@ public class FrameTabuada {
 		labelTitulo.setFont(new Font("AmericanTypewriter-Light", Font.PLAIN, 26));
 		labelTitulo.setForeground(corDoTitulo);
 		labelTitulo.setOpaque(true);
-		labelTitulo.setBackground(new Color(91, 132, 203));
+		labelTitulo.setBackground(new Color(225, 214, 246)); 
 
 		JLabel labelCorFundoTitulo = new JLabel();
 		labelCorFundoTitulo.setBounds(0, 0, 600, 50);
 		labelCorFundoTitulo.setOpaque(true);
-		labelCorFundoTitulo.setBackground(new Color(91, 132, 203));
+		labelCorFundoTitulo.setBackground(new Color(225, 214, 246));
 
 		JLabel labelIcone = new JLabel();
 		labelIcone.setBounds(10, 65, 130, 130);
@@ -74,14 +77,14 @@ public class FrameTabuada {
 		labelTitulo1.setText("Tabuada 1.0");
 		labelTitulo1.setBounds(115, 80, 300, 30);
 		labelTitulo1.setFont(new Font("AmericanTypewriter-Light", Font.BOLD, 30));
-		labelTitulo1.setForeground(new Color(255, 76, 75));
+		labelTitulo1.setForeground (Color.BLACK);
 
 		JLabel labelSubtitulo = new JLabel();
 		labelSubtitulo.setText(
 				"<html>Com a Tabuada 1.0 os seus problemas acabaram. Calcule<br> a tabuada que desejar em segundos</html>");
 		labelSubtitulo.setBounds(123, 115, 380, 30);
 		labelSubtitulo.setFont(new Font("AmericanTypewriter-Light", Font.PLAIN, 12));
-		labelSubtitulo.setForeground(Color.GRAY);
+		labelSubtitulo.setForeground(new Color(225,214,246));
 
 		JLabel labelMultiplicando = new JLabel();
 		labelMultiplicando.setText("Multiplicando:");
@@ -94,7 +97,7 @@ public class FrameTabuada {
 		textFieldMultiplicando.setBorder(BorderFactory.createCompoundBorder(textFieldMultiplicando.getBorder(),
 				BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 		textFieldMultiplicando.setHorizontalAlignment(JTextField.RIGHT);
-		textFieldMultiplicando.setForeground(new Color(91, 132, 203));
+		textFieldMultiplicando.setForeground(Color.BLACK);
 		textFieldMultiplicando.setFont(new Font("AmericanTypewriter-Light", Font.PLAIN, 30));
 		textFieldMultiplicando.setMargin(new Insets(20, 20, 20, 20));
 
@@ -107,7 +110,7 @@ public class FrameTabuada {
 		textFieldMinimoMultiplicador.setBounds(330, 210, 200, 40);
 		textFieldMinimoMultiplicador.setBorder(new MatteBorder(2, 2, 2, 2, new Color(91, 132, 203)));
 		textFieldMinimoMultiplicador.setHorizontalAlignment(JTextField.RIGHT);
-		textFieldMinimoMultiplicador.setForeground(new Color(91, 132, 203));
+		textFieldMinimoMultiplicador.setForeground(Color.BLACK);
 		textFieldMinimoMultiplicador.setFont(new Font("AmericanTypewriter-Light", Font.PLAIN, 30));
 		textFieldMinimoMultiplicador.setBorder(BorderFactory.createCompoundBorder(
 				textFieldMinimoMultiplicador.getBorder(), BorderFactory.createEmptyBorder(5, 5, 5, 5)));
@@ -121,7 +124,7 @@ public class FrameTabuada {
 		textFieldMaximoMultiplicador.setBounds(330, 260, 200, 40);
 		textFieldMaximoMultiplicador.setBorder(new MatteBorder(2, 2, 2, 2, new Color(91, 132, 203)));
 		textFieldMaximoMultiplicador.setHorizontalAlignment(JTextField.RIGHT);
-		textFieldMaximoMultiplicador.setForeground(new Color(91, 132, 203));
+		textFieldMaximoMultiplicador.setForeground(Color.BLACK);
 		textFieldMaximoMultiplicador.setFont(new Font("AmericanTypewriter-Light", Font.PLAIN, 30));
 		textFieldMaximoMultiplicador.setBorder(BorderFactory.createCompoundBorder(
 				textFieldMaximoMultiplicador.getBorder(), BorderFactory.createEmptyBorder(5, 5, 5, 5)));
@@ -131,7 +134,7 @@ public class FrameTabuada {
 		buttonCalcular.setBounds(20, 340, 310, 50);
 		buttonCalcular.setForeground(Color.WHITE);
 		buttonCalcular.setFont(new Font("AmericanTypewriter-Light", Font.BOLD, 24));
-		buttonCalcular.setBackground(new Color(86, 151, 54));
+		buttonCalcular.setBackground(new Color(102,0,153));
 		buttonCalcular.setBorder(new MatteBorder(1, 1, 1, 1, new Color(91, 132, 203)));
 
 		JButton buttonLimpar = new JButton();
@@ -139,19 +142,19 @@ public class FrameTabuada {
 		buttonLimpar.setBounds(340, 340, 190, 50);
 		buttonLimpar.setForeground(Color.WHITE);
 		buttonLimpar.setFont(new Font("AmericanTypewriter-Light", Font.PLAIN, 24));
-		buttonLimpar.setBackground(new Color(255, 192, 0));
+		buttonLimpar.setBackground(new Color(219,112,147));
 		buttonLimpar.setBorder(new MatteBorder(1, 1, 1, 1, new Color(91, 132, 203)));
 
 		JLabel labelResultado = new JLabel();
 		labelResultado.setText("Resultado:");
 		labelResultado.setBounds(20, 420, 180, 30);
 		labelResultado.setFont(new Font("AmericanTypewriter-Light", Font.BOLD, 26));
-		labelResultado.setForeground(Color.BLACK);
+		labelResultado.setForeground (Color.BLACK);
 		
-		JList<String> listResultado = new JList<String>();
+		
 		listResultado.setBounds(20, 460, 510, 280);
-		listResultado.setBackground(new Color(255, 242, 204));
-		listResultado.setForeground(new Color(86, 151, 54));
+		listResultado.setBackground(Color.BLACK);
+		listResultado.setForeground(Color.WHITE);
 
 		JScrollPane scroll = new JScrollPane(listResultado);
 		scroll.setBounds(20, 460, 510, 280);
@@ -187,6 +190,8 @@ public class FrameTabuada {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				limparCampos();
+				String[] campoVazio = {""};
+				listResultado.setListData(campoVazio);;
 
 			}
 		});
@@ -218,7 +223,7 @@ public class FrameTabuada {
 
 	public void verificarMinimoMaximoInvalido() {
 		JOptionPane.showMessageDialog(null,
-				"Preencha os campos \"Mínimo Multiplicador\" e \"Máximo Multiplicador\" de maneira correta. Onde o Mínimo tem que ser um valor menor que o do máximo",
+				"<html>Preencha os campos \"Mínimo Multiplicador\" e \"Máximo Multiplicador\" de maneira correta.<br> Onde o Mínimo Multiplicador precisa ser um valor menor do que o Máximo Multiplicador<html>",
 				"Erro!", JOptionPane.ERROR_MESSAGE);
 		textFieldMinimoMultiplicador.setText("");
 		textFieldMaximoMultiplicador.setText("");
